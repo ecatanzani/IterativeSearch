@@ -17,7 +17,8 @@ int main (int argc, char** argv) {
     for ( boost::filesystem::recursive_directory_iterator end, dir(argv[1]);
          dir != end; ++dir ) {
         if(!is_directory(*dir)) {
-            tmp_str = canonical(*dir).string();
+            tmp_str = "/";
+            tmp_str.append(canonical(*dir).string());
             std::size_t found=tmp_str.find_last_of("\"");
             tmp_str=tmp_str.substr(1,found);
             ListFile << tmp_str << "\n";
